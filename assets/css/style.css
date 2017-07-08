@@ -4,13 +4,19 @@ body {
 	position: relative;
 	height: 100vh;
 	font-family: 'VT323', monospace;
+	overflow: hidden;
 }
 
-.player {
-	/*background-color: #b6b6b6;*/
-	border: 2px solid #e3e3e3;
-	height: 300px;
+#hero .player, #enemy .player {
+	border: 2px solid #cccc00;
+	height: 250px;
 	width: 200px;
+}
+
+#Players .player {
+	border: 2px solid #e3e3e3;
+	height: 150px;
+	width: 100px;
 }
 
 #attack-button {
@@ -24,24 +30,36 @@ body {
 /*.arena-area.margin {
 	margin: 3rem;
 }*/
-.padding-top {
+/*.padding-top {
 	padding-top: 1rem;
-}
-
+}*/
 .player-name-wrap {
 	background: rgba(0,0,0,.85);
-	border: 2px solid #cccc00;
-	padding: 5px 0;
 	position: relative;
+}
+
+#Players .player-name-wrap {
+	border: 2px solid #cccc00;
+	top: 50%;
+}
+
+#hero .player-name-wrap, #enemy .player-name-wrap {
+	border: 2px solid #e3e3e3;
 	top: 70%;
 }
-.player-name-wrap * {
-	color: white
+
+#Players .player-name-wrap * {
+	color: #e3e3e3
+}
+
+#hero .player-name-wrap *, #enemy .player-name-wrap * {
+	color: #cccc00;
 }
 
 h1, h2, h3, h4, p {
 	color: #e3e3e3;
 	font-family: 'VT323', monospace;
+	margin: 0;
 }
 
 #attack-button {

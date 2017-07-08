@@ -84,6 +84,8 @@ function calculateWinner() {
 		// $('.active-hero').remove();
 	} else if (parseInt($('.active-enemy .hp').attr('data-hp')) <= 0) {
 		$('.the-message').text('You desimated ' + $('.active-enemy .player-name-wrap h3').attr('data-name') + ' begin your next mission!');
+		$('.hero-message').text('');
+		$('.enemy-message').text('');
 		$('.active-enemy').remove();
 	}
 
