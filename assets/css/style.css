@@ -1,0 +1,72 @@
+body {
+	background: url(../images/body3.jpg) no-repeat center center;
+	background-size: cover;
+	position: relative;
+	height: 100vh;
+	font-family: 'VT323', monospace;
+}
+
+.player {
+	/*background-color: #b6b6b6;*/
+	border: 2px solid #e3e3e3;
+	height: 300px;
+	width: 200px;
+}
+
+#attack-button {
+	display: none;
+}
+
+#attack-button:focus {
+	outline: none;
+}
+
+/*.arena-area.margin {
+	margin: 3rem;
+}*/
+.padding-top {
+	padding-top: 1rem;
+}
+
+.player-name-wrap {
+	background: rgba(0,0,0,.85);
+	border: 2px solid #cccc00;
+	padding: 5px 0;
+	position: relative;
+	top: 70%;
+}
+.player-name-wrap * {
+	color: white
+}
+
+h1, h2, h3, h4, p {
+	color: #e3e3e3;
+	font-family: 'VT323', monospace;
+}
+
+#attack-button {
+	background: transparent;
+	border: 1px solid #cccc00;
+	border-radius: 5px;
+	color: #cccc00;
+	font-size: 1.4rem;
+	padding: 7px 13px;                
+}
+
+.directions {
+	margin-top: 1rem;
+}
+
+.attack-messages {
+	margin-bottom: 2rem;
+}
+
+.title {
+	display: inline-block;
+	font-size: 5rem;
+	color: #cccc00;
+	transform: rotate(25deg);
+	text-shadow: 0px 1px 5px #000;
+	position: relative;
+	left: -45px;
+}
