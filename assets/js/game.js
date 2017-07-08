@@ -27,12 +27,12 @@ function attackPoints() {
 
 function handlePlayerClick() {
 	if($('#hero').html() == false) {
-		// $('.arena-area').addClass('margin');
 		$('.directions h3').text('Click a player to select your opponent');
 		$('.hero-title').text('Black Ops');
 		$('#hero').html($(this).clone().addClass('active-hero col-md-12').removeClass('col-md-3'));
 		$(this).remove();
 	} else if ($('#enemy').html() == false) {
+		$('.hp-message').text('');
 		$('.directions h3').text('');
 		$('.enemy-title').text('USNA');
 		$('.the-message').text('');
@@ -74,16 +74,19 @@ function attackClick() {
 	}
 	calculateWinner();
 
-
 }
 
 function calculateWinner() {
-
+	var randomHeroHP = (Math.floor(Math.random() * 50) + 50);
+	var currentHP = parseInt($('.active-hero .hp').attr('data-hp'));
 	if (parseInt($('.active-hero .hp').attr('data-hp')) <= 0) {
 		$('.the-message').text('Pick it up soldier you got killed out there');
 		// $('.active-hero').remove();
 	} else if (parseInt($('.active-enemy .hp').attr('data-hp')) <= 0) {
 		$('.the-message').text('You desimated ' + $('.active-enemy .player-name-wrap h3').attr('data-name') + ' begin your next mission!');
+		$('.active-hero .hp').attr('data-hp', currentHP + randomHeroHP);
+		$('.active-hero .hp').text($('.active-hero .hp').attr('data-hp') + ' hp');
+		$('.hp-message').text('You gained ' + $('.active-hero .hp').attr('data-hp') + '!');
 		$('.hero-message').text('');
 		$('.enemy-message').text('');
 		$('.active-enemy').remove();
