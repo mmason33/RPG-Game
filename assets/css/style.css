@@ -82,3 +82,7 @@ h1, h2, h3, h4, p {
 	position: relative;
 	left: -45px;
 }
+
+.hp-message {
+	color: #cccc00;
+}

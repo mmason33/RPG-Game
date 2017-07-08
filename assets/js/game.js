@@ -44,49 +44,52 @@ function handlePlayerClick() {
 
 function attackClick() {
 	attackPoints();
-	var enemyHP = parseInt($('.active-enemy .hp').attr('data-hp'));
-	var heroHP = parseInt($('.active-hero .hp').attr('data-hp'));
-	var enemyAttack = parseInt($('.active-enemy').attr('data-attack'));
-	var heroAttack = parseInt($('.active-hero').attr('data-attack'));
+	// var enemyHP = parseInt($('.active-enemy .hp').attr('data-hp'));
+	// var heroHP = parseInt($('.active-hero .hp').attr('data-hp'));
+	// var enemyAttack = parseInt($('.active-enemy').attr('data-attack'));
+	// var heroAttack = parseInt($('.active-hero').attr('data-attack'));
 
-	if(heroHP > 0 && enemyHP > 0) {
-		$('.active-enemy .hp').text((enemyHP - heroAttack) + ' hp');
-		$('.active-enemy .hp').attr('data-hp', enemyHP - heroAttack);
+	if(parseInt($('.active-hero .hp').attr('data-hp')) > 0 && parseInt($('.active-enemy .hp').attr('data-hp')) > 0) {
+		$('.active-enemy .hp').text(
+			(parseInt($('.active-enemy .hp').attr('data-hp')) - parseInt($('.active-hero').attr('data-attack'))) + ' hp'
+		);
+		$('.active-enemy .hp').attr('data-hp', parseInt($('.active-enemy .hp').attr('data-hp')) - parseInt($('.active-hero').attr('data-attack')));
 		$('.hero-message').text(
 			$('.active-hero h3').attr('data-name') + 
 			' attacked ' + 
 			$('.active-enemy h3').attr('data-name') + 
 			' and reduced their health by ' + 
-			heroAttack + 
+			parseInt($('.active-hero').attr('data-attack')) + 
 			' points!'
 		);
-
-		$('.active-hero .hp').text((heroHP - enemyAttack) + ' hp');
-		$('.active-hero .hp').attr('data-hp', heroHP - enemyAttack);
-		$('.enemy-message').text(
-			$('.active-enemy h3').attr('data-name') + 
-			' attacked ' + 
-			$('.active-hero h3').attr('data-name') + 
-			' and reduced their health by ' + 
-			enemyAttack + 
-			' points!'
-		);
+		if(parseInt($('.active-enemy .hp').attr('data-hp')) > 0) {
+			$('.active-hero .hp').text((parseInt($('.active-hero .hp').attr('data-hp')) - parseInt($('.active-enemy').attr('data-attack'))) + ' hp');
+			$('.active-hero .hp').attr('data-hp', parseInt($('.active-hero .hp').attr('data-hp')) - parseInt($('.active-enemy').attr('data-attack')));
+			$('.enemy-message').text(
+				$('.active-enemy h3').attr('data-name') + 
+				' attacked ' + 
+				$('.active-hero h3').attr('data-name') + 
+				' and reduced their health by ' + 
+				parseInt($('.active-enemy').attr('data-attack')) + 
+				' points!'
+			);
+		}
 	}
 	calculateWinner();
 
 }
 
 function calculateWinner() {
-	var randomHeroHP = (Math.floor(Math.random() * 50) + 50);
+	var randomHeroHP = (Math.floor(Math.random() * 60) + 70);
 	var currentHP = parseInt($('.active-hero .hp').attr('data-hp'));
 	if (parseInt($('.active-hero .hp').attr('data-hp')) <= 0) {
 		$('.the-message').text('Pick it up soldier you got killed out there');
-		// $('.active-hero').remove();
 	} else if (parseInt($('.active-enemy .hp').attr('data-hp')) <= 0) {
 		$('.the-message').text('You desimated ' + $('.active-enemy .player-name-wrap h3').attr('data-name') + ' begin your next mission!');
 		$('.active-hero .hp').attr('data-hp', currentHP + randomHeroHP);
+		// console.log($('.active-hero .hp').attr('data-hp', currentHP + randomHeroHP));
 		$('.active-hero .hp').text($('.active-hero .hp').attr('data-hp') + ' hp');
-		$('.hp-message').text('You gained ' + $('.active-hero .hp').attr('data-hp') + '!');
+		$('.hp-message').text('You gained ' + randomHeroHP + ' hp!');
 		$('.hero-message').text('');
 		$('.enemy-message').text('');
 		$('.active-enemy').remove();
