@@ -99,9 +99,13 @@ function calculateWinner() {
 
 $(document).ready(function() {
 
+if (window.innerWidth >= 768) {
 	playerNames(['Synaptic', 'Merc', 'Warfighter', 'Phantom']);
 	healthPoints();
 	$('.select-player').click(handlePlayerClick);
 	$('#attack-button').click(attackClick);
+} else {
+	document.write('Please view this project on a larger screen. (min:768px wide)');
+}
 
 });
