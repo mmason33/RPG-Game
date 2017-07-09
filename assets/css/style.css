@@ -19,14 +19,6 @@ body {
 	width: 100px;
 }
 
-#attack-button {
-	display: none;
-}
-
-#attack-button:focus {
-	outline: none;
-}
-
 .player-name-wrap {
 	background: rgba(0,0,0,.85);
 	position: relative;
@@ -56,13 +48,22 @@ h1, h2, h3, h4, p {
 	margin: 0;
 }
 
-#attack-button {
+#attack-button, #reset-button {
 	background: transparent;
 	border: 1px solid #cccc00;
 	border-radius: 5px;
 	color: #cccc00;
-	font-size: 1.4rem;
-	padding: 7px 13px;                
+	font-size: 1.2rem;
+	padding: 7px 13px;
+	display: none;                
+}
+
+#reset-button {
+	margin-top: 1rem;
+}
+
+#attack-button:focus {
+	outline: none;
 }
 
 .directions {
@@ -85,4 +86,11 @@ h1, h2, h3, h4, p {
 
 .hp-message {
 	color: #cccc00;
+}
+
+@media screen and (max-width:1200px){
+	body {
+		overflow: scroll;
+		height: 110vh;
+	}
 }
