@@ -1,6 +1,17 @@
 class RPG {
 	constructor(){
 		this.players = [];
+
+		this.messages = {
+			hero: '',
+			enemy: '',
+			heroAttack: '',
+			enemyAttack: '',
+			directions: {
+				pickHero: 'Click player to select your soldier!',
+				pickEnemy: 'Click player to select your opponent!'
+			}
+		}
 	}
 
 	playerNames(array) {
@@ -18,6 +29,7 @@ class RPG {
 			var newContent = document.createTextNode(this.players[player].name);
 			var newHp = document.createElement('div');
 			newHp.classList.add('hp');
+			newH3.classList.add('player-name');
 			newDiv.appendChild(newH3);
 			newDiv.appendChild(newHp);
 			newH3.appendChild(newContent);
@@ -42,12 +54,42 @@ class RPG {
 	attackPoints() {
 
 		for(let player in this.players) {
-
-
-
+			var randomAttack = Math.floor(Math.random() * 25) + 25;
+			var nameList = document.getElementsByClassName('player-name');
+			nameList[player].setAttribute('data-attack', randomAttack);
 		}
 
 	}
+
+	handlePlayerClick(event) {
+
+		var heroWrap = document.getElementById('hero');
+		var enemyWrap = document.getElementById('enemy');
+
+		if(heroWrap.innerHTML == false) {
+			event.currentTarget.classList.remove('col-md-3');
+			event.currentTarget.classList.add('col-md-12', 'active-hero');
+			heroWrap.appendChild(event.currentTarget);
+		} else if (enemyWrap.innerHTML == false) {
+			event.currentTarget.classList.remove('col-md-3');
+			event.currentTarget.classList.add('col-md-12', 'active-enemy');
+			enemyWrap.appendChild(event.currentTarget);
+		}
+
+		document.getElementById('attack-button').style.display = 'inline-block';
+
+	}
+
+	// getMessages() {
+	// 	var directions = document.querySelector('directions');
+	// 	// directions.appendChild(document.createElement('h3'));
+	// 	if(heroWrap.innerHTML == false) {
+
+	// 	} else if (enemyWrap.innerHTML == false) {
+
+	// 	}
+
+	// }
 
 }
 
@@ -55,6 +97,15 @@ const rpg = new RPG();
 rpg.playerNames(['one', 'two', 'three', 'four']);
 rpg.playerMarkUp();
 rpg.healthPoints();
+rpg.attackPoints();
+// rpg.getMessages();
+// document.addEventListener('click', rpg.handlePlayerClick);
+
+for (let player in rpg.players) {
+	let classes = document.getElementsByClassName('player');
+	classes[player].addEventListener('click', rpg.handlePlayerClick);
+}
+// rpg.handlePlayerClick();
 
 // function healthPoints() {
 	
