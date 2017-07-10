@@ -91,9 +91,24 @@ class RPG {
 	}
 
 	calcWinner() {
+		var randomHeroHP = (Math.floor(Math.random() * 60) + 70);
+		var currentHeroHP = parseInt(document.querySelectorAll('.active-hero .hp')[0].textContent);
+		var currentEnemyHP = parseInt(document.querySelectorAll('.active-enemey .hp')[0].textContent);
 
-		
+		if (currentHeroHP <= 0) {
 
+			document.getElementById('the-message').textContent = 'Pick it up soldier you got killed out there!';
+			document.getElementsByName('reset-button').style.display = 'inline-block';
+
+		} else if (currentEnemyHP <= 0) {
+
+			if (currentEnemyHP <= 0 && document.getElementById('players').innerHTML == false) {
+
+				document.getElementById('the-message').textContent = 'You Win!';
+
+			}
+
+		}
 	}
 }
 
@@ -113,38 +128,6 @@ atButton.addEventListener('click', function(){
 	rpg.attackClick();
 });
 
-// function attackClick() {
-// 	attackPoints();
-
-// 	if(parseInt($('.active-hero .hp').attr('data-hp')) > 0 && parseInt($('.active-enemy .hp').attr('data-hp')) > 0) {
-// 		$('.active-enemy .hp').text(
-// 			(parseInt($('.active-enemy .hp').attr('data-hp')) - parseInt($('.active-hero').attr('data-attack'))) + ' hp'
-// 		);
-// 		$('.active-enemy .hp').attr('data-hp', parseInt($('.active-enemy .hp').attr('data-hp')) - parseInt($('.active-hero').attr('data-attack')));
-// 		$('.hero-message').text(
-// 			$('.active-hero h3').attr('data-name') + 
-// 			' attacked ' + 
-// 			$('.active-enemy h3').attr('data-name') + 
-// 			' and reduced their health by ' + 
-// 			parseInt($('.active-hero').attr('data-attack')) + 
-// 			' points!'
-// 		);
-// 		if(parseInt($('.active-enemy .hp').attr('data-hp')) > 0) {
-// 			$('.active-hero .hp').text((parseInt($('.active-hero .hp').attr('data-hp')) - parseInt($('.active-enemy').attr('data-attack'))) + ' hp');
-// 			$('.active-hero .hp').attr('data-hp', parseInt($('.active-hero .hp').attr('data-hp')) - parseInt($('.active-enemy').attr('data-attack')));
-// 			$('.enemy-message').text(
-// 				$('.active-enemy h3').attr('data-name') + 
-// 				' attacked ' + 
-// 				$('.active-hero h3').attr('data-name') + 
-// 				' and reduced their health by ' + 
-// 				parseInt($('.active-enemy').attr('data-attack')) + 
-// 				' points!'
-// 			);
-// 		}
-// 	}
-// 	calculateWinner();
-
-// }
 
 // function calculateWinner() {
 // 	var randomHeroHP = (Math.floor(Math.random() * 60) + 70);
