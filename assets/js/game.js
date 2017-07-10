@@ -1,4 +1,5 @@
 class RPG {
+
 	constructor(){
 		this.players = [];
 	}
@@ -86,6 +87,14 @@ class RPG {
 
 			activeEnemyHp -= heroAttack;
 			document.querySelectorAll('.active-enemy .hp')[0].textContent = activeEnemyHp;
+
+			document.getElementById('hero-message').textContent = document.querySelectorAll('.active-hero .player-name')[0].textContent + ' attacked ' + document.querySelectorAll('.active-enemy .player-name')[0].textContent + ' and reduced their health by ' + heroAttack + ' points!';
+			
+			if (currentEnemyHP > 0) {
+
+				document.getElementById('enemy-message').textContent = document.querySelectorAll('.active-enemy .player-name')[0].textContent + ' attacked ' + document.querySelectorAll('.active-hero .player-name')[0].textContent + ' and reduced their health by ' + enemyAttack + ' points!';
+
+			}
 		}
 
 	}
@@ -106,6 +115,12 @@ class RPG {
 
 				document.getElementById('the-message').textContent = 'You Win!';
 
+			} else {
+
+				document.querySelectorAll('.active-hero .hp')[0].textContent = currentHeroHP + randomHeroHP;
+				document.getElementById('hp-message').textContent = 'You gained ' + randomHP + ' hp!';
+				document.getElementsByClassName('active-enemy')[0].remove();
+
 			}
 
 		}
@@ -125,41 +140,6 @@ var atButton = document.getElementById('attack-button');
 
 atButton.addEventListener('click', function(){
 	rpg.attackPoints();
+	rpg.calcWinner();
 	rpg.attackClick();
 });
-
-
-// function calculateWinner() {
-// 	var randomHeroHP = (Math.floor(Math.random() * 60) + 70);
-// 	var currentHP = parseInt($('.active-hero .hp').attr('data-hp'));
-// 	if (parseInt($('.active-hero .hp').attr('data-hp')) <= 0) {
-// 		$('.the-message').text('Pick it up soldier you got killed out there');
-// 		$('#reset-button').show();
-// 	} else if (parseInt($('.active-enemy .hp').attr('data-hp')) <= 0) {
-// 		if(parseInt($('.active-enemy .hp').attr('data-hp')) <= 0 && $('#Players').html() == false) {
-// 			$('.the-message').text('You Win!');
-// 		} else {
-// 			$('.the-message').text('You desimated ' + $('.active-enemy .player-name-wrap h3').attr('data-name') + ' begin your next mission!');
-// 			$('.active-hero .hp').attr('data-hp', currentHP + randomHeroHP);
-// 			$('.active-hero .hp').text($('.active-hero .hp').attr('data-hp') + ' hp');
-// 			$('.hp-message').text('You gained ' + randomHeroHP + ' hp!');
-// 			$('.hero-message').text('');
-// 			$('.enemy-message').text('');
-// 			$('.active-enemy').remove();
-// 		}
-// 	}
-// }
-
-
-// $(document).ready(function() {
-
-// if (window.innerWidth >= 768) {
-// 	playerNames(['Synaptic', 'Merc', 'Warfighter', 'Phantom']);
-// 	healthPoints();
-// 	$('.select-player').click(handlePlayerClick);
-// 	$('#attack-button').click(attackClick);
-// } else {
-// 	document.write('Please view this project on a larger screen. (min:768px wide)');
-// }
-
-// });
