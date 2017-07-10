@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<main class="container padding-top">
+
+
+	<section class="row align-items-center">
+		<div id="directions" class="col-md-12 text-center">
+			<!-- <img src="assets/images/logo1.png"><h1 class="title">RPG</h1> -->
+			<h3 id="directions-message">Click a player to select your soldier</h3>
+		</div>
+	</section>
+
+
+
+		<section class="row alert-message">
+			<div class="col-md-12 text-center">
+				<h3 class="the-message"></h3>
+				<p class="hp-message"></p>
+			</div>
+		</section>
+
+
+
+		<section class="row justify-content-center align-items-center arena-area">
+
+			<div class="col-md-5 text-center">
+				<h1 class="hero-title"></h1>
+				<div id="hero" class="row justify-content-center">
+
+				</div>
+			</div>
+
+			<div class="col-md-2 text-center">
+				<button id="attack-button" value="attack">Attack</button>
+				<button id="reset-button" onClick="location.reload()">Play again</button>
+			</div>
+
+			<div class="col-md-5 text-center">
+				<h1 class="enemy-title"></h1>
+				<div id="enemy" class="row justify-content-center">
+
+				</div>
+			</div>
+		</section>
+
+		<div class="row justify-content-center align-items-center attack-messages">
+			<div class="col-md-5 text-center">
+				<p class="hero-message"></p>
+			</div>
+			<div class="col-md-5 offset-md-2 text-center">
+				<p class="enemy-message"></p>
+			</div>
+		</div>
+
+
+
+		<div id="players" class="row justify-content-center align-items-center text-center"></div>
+
+		</main>
+<script src="assets/js/game.js"></script>
+</body>
+</html>
