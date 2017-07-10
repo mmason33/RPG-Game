@@ -95,6 +95,6 @@ h1, h2, h3, h4, p {
 	}
 }*/
 
-.player-name, .hp {
+.player-name, .hp, #directions-message {
 	color: #fff;
 }
