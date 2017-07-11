@@ -5,8 +5,32 @@ body {
 	height: 100vh;
 	font-family: 'VT323', monospace;
 	overflow: hidden;
+	padding-top: 15px;
 }
 
+.attack-points {
+	display: none;
+}
+
+#player-0 {
+	background: url('../images/synaptic.jpg')no-repeat center center;
+	background-size: cover;
+}
+
+#player-1 {
+	background: url('../images/merc.jpg')no-repeat center center;
+	background-size: cover;
+}
+
+#player-2 {
+	background: url('../images/warfighter.jpg')no-repeat center center;
+	background-size: cover;
+}
+
+#player-3 {
+	background: url('../images/phantom.jpg')no-repeat center center;
+	background-size: cover;
+}
 #hero .player, #enemy .player {
 	border: 2px solid #cccc00;
 	height: 250px;
